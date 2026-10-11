@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Завоевание Европы — пошаговая стратегия</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="topbar">
+    <h1>⚔️ Завоевание Европы</h1>
+    <div id="turn-info">
+      <span id="turn-label">Ход 1</span>
+      <span id="phase-label" class="phase-badge">—</span>
+    </div>
+    <div class="header-actions">
+      <button id="btn-rules" class="btn ghost">📜 Правила</button>
+      <button id="btn-new" class="btn">🔄 Новая игра</button>
+    </div>
+  </header>
+
+  <main id="layout">
+    <aside id="sidebar">
+      <section class="panel" id="players-panel">
+        <h2>Державы</h2>
+        <div id="players-list"></div>
+      </section>
+
+      <section class="panel" id="phase-panel">
+        <h2>Управление</h2>
+        <div id="reserve-info" class="reserve-box">Резервы: <b id="reserve-count">0</b></div>
+        <div id="hint-text" class="hint">Выберите режим игры.</div>
+        <div class="btn-col">
+          <button id="btn-place-done" class="btn primary" disabled>Готово (размещение)</button>
+          <button id="btn-move-mode" class="btn" disabled>🔀 Переброс армий</button>
+          <button id="btn-end-turn" class="btn danger" disabled>⏭ Закончить ход</button>
+        </div>
+      </section>
+
+      <section class="panel" id="log-panel">
+        <h2>Хроника</h2>
+        <div id="log"></div>
+      </section>
+    </aside>
+
+    <section id="map-wrap">
+      <canvas id="map" width="1000" height="720"></canvas>
+      <div id="tooltip" class="hidden"></div>
+    </section>
+  </main>
+
+  <!-- Стартовое меню / конец игры -->
+  <div id="overlay">
+    <div class="overlay-card" id="menu-card">
+      <h1 class="game-title">Завоевание Европы</h1>
+      <p class="subtitle">Пошаговая стратегия. 45 стран, настоящие флаги, дипломатия кубиков.</p>
+      <div class="menu-row">
+        <label>Количество держав:</label>
+        <div class="seg" id="player-count-seg">
+          <button data-count="2" class="seg-btn active">2</button>
+          <button data-count="3" class="seg-btn">3</button>
+          <button data-count="4" class="seg-btn">4</button>
+        </div>
+      </div>
+      <button id="btn-start" class="btn primary big">🗡️ Начать завоевание</button>
+      <button id="btn-rules-2" class="btn ghost">📜 Правила игры</button>
+      <p class="footnote">Флаги стран скачаны из интернета и встроены в игру.</p>
+    </div>
+
+    <div class="overlay-card hidden" id="gameover-card">
+      <h1 class="game-title" id="gameover-title">Победа!</h1>
+      <p class="subtitle" id="gameover-text"></p>
+      <button id="btn-restart" class="btn primary big">🔄 Играть снова</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно правил -->
+  <div id="rules-modal" class="hidden">
+    <div class="modal-card">
+      <h2>📜 Правила</h2>
+      <ul>
+        <li><b>Цель:</b> захватить все 45 стран Европы и уничтожить соперников.</li>
+        <li><b>Размещение:</b> в начале хода вы получаете резервы (армии). Кликайте по своим странам, чтобы поставить по 1 армии.</li>
+        <li><b>Атака:</b> выберите свою страну (армий ≥ 2), затем кликните на соседнюю вражескую. Каждый клик — один раунд боя (кубики).</li>
+        <li><b>Бой:</b> атакующий бросает до 3 кубиков, защитник — до 2. При равенстве побеждает защитник. У кубиков выше — тот и выигрывает раунд.</li>
+        <li><b>Захват:</b> когда в защищающейся стране кончаются армии — она переходит вам вместе с частью наступающих войск.</li>
+        <li><b>Переброс:</b> в режиме переброса перекидывайте армии между своими соседними странами (оставляет 1 армию на месте).</li>
+        <li><b>Бонусы:</b> полностью захватив регион (Скандинавия, Запад, Юг, Балканы, Восток), вы получаете дополнительные резервы каждый ход.</li>
+        <li><b>Поражение:</b> держава без стран выбывает из игры.</li>
+      </ul>
+      <button id="btn-rules-close" class="btn primary">Понятно</button>
+    </div>
+  </div>
+
+  <script src="flags.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

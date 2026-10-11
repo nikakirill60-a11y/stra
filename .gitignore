@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.DS_Store
+.tmp/
+flags-src/
+dist/sea-bundle.cjs
+dist/sea-blob.blob
+dist/sea-config.json
+dist/node_modules/

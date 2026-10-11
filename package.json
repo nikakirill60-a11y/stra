@@ -1,0 +1,19 @@
+{
+  "name": "europe-strategy",
+  "version": "1.0.0",
+  "description": "«Завоевание Европы» — пошаговая стратегия с флагами стран Европы",
+  "main": "server.js",
+  "bin": {
+    "europe-strategy": "server.js"
+  },
+  "scripts": {
+    "flags": "node tools/download-flags.mjs",
+    "start": "node server.js",
+    "test": "node tools/smoke-test.mjs",
+    "build:win": "node tools/build-win.mjs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "postject": "^1.0.0-alpha.6"
+  }
+}
